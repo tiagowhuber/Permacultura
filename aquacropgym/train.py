@@ -22,7 +22,7 @@ gendf = calc_eto_faopm('data/CPWG.dat', 1995, 40.4, 1072, True, ["simyear", "jda
 gendf.head()
 
 IRR_CAP = 400 # max amount of irrigation (mm/ha) that can be applied in a single season
-ACTION_SET = 'depth_discreet' # action sets, alternatives are: 'depth', 'binary', 'smt4', 'depth_discreet'
+ACTION_SET = 'smt4' # action sets, alternatives are: 'depth', 'binary', 'smt4', 'depth_discreet'
 DAYS_TO_IRR = 5 # 'number of days between irrigation decisions (e.g., 1, 3, 5, 7)
 envconfig = nebraska_maize_config.copy() # get default config dictionary
 envconfig['gendf'] = gendf # set weather data
