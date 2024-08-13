@@ -57,34 +57,3 @@ for i in range(30000000):
     model.learn(total_timesteps=TIMESTEPS,reset_num_timesteps=False, tb_log_name="PPO")
     model.save(f"{models_dir}/{TIMESTEPS*i}")
 
-
-# for i in range(1, 30000000):
-#     model.learn(total_timesteps=1)
-#     ts = model.num_timesteps
-
-#     if i % 1000 == 0: # evaluate agent on train and test years
-#         print('eval')
-#         for irr_cap in [IRR_CAP]:
-#             test_env_config = copy.deepcopy(envconfig) # make a copy of the training env
-#             test_env_config['evaluation_run'] = True # sets env to evaluation mode
-
-#             train_rew, test_rew = evaluate_agent(model, Aquaenv, test_env_config) # evaluate agent
-            
-#             proftrain.append(train_rew)
-#             proftest.append(test_rew)
-#             timesteps.append(ts)
-#             caps.append(irr_cap)
-
-#             print(irr_cap, f'Train: {round(train_rew, 3)}')
-#             print(irr_cap, f'Test: {round(test_rew, 3)}')
-
-#     if i % 1000 == 0: # save results
-#         checkpoint_path = model.save(f"models/ppo_crop_model_{i}.zip")
-#         print(checkpoint_path)
-
-#         result_df = pd.DataFrame([timesteps, proftrain, proftest, caps]).T
-#         result_df.to_csv(f'outputs/neb_corn_ppo_day_{DAYS_TO_IRR}_act_{ACTION_SET}_cap_{IRR_CAP}.csv')
-#         plt.plot(timesteps, proftrain, label='Train Reward')
-#         plt.plot(timesteps, proftest, label='Test Reward')
-#         plt.legend()
-#         plt.show()
