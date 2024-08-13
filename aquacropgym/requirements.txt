@@ -1,0 +1,7 @@
+aquacrop
+aquacropeto
+aquacrop1
+gymnasium
+stablebaselines3
+tensorboard
+matplotlib
