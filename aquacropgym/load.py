@@ -36,12 +36,12 @@ env = Aquaenv(envconfig)
 vec_env = DummyVecEnv([lambda: env])
 
 models_dir = "models\smt4-norain-defaultenvconfig-rtx"
-model_path = f"{models_dir}/1090000.zip"
+model_path = f"{models_dir}/9890000.zip"
 
 # Load the model with the VecEnv
 model = PPO.load(model_path, env=vec_env)
 
-episodes = 30
+episodes = 10
 
 with open("trainedoutput.csv", "w", newline='') as file:
     pass
@@ -55,7 +55,6 @@ with open("rewards.csv", "a", newline='') as file:
         while not done:
             #vec_env.render()  # Use vec_env.render() instead of env.render()
             action, _ = model.predict(obs)
-
             #print("Action: ", action)
             #file.write(f"Action: {action}\n")  # Write the action to the text file
             obs, reward, done, info = vec_env.step(action)  # Use vec_env.step() instead of env.step()

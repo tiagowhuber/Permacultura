@@ -8,7 +8,7 @@ import time
 import datetime
 import numpy as np
 
-filepath=(get_filepath('champion_climate_no_rain.txt'))
+filepath=(get_filepath('champion_climate.txt'))
 
 weather_data = prepare_weather(filepath)
 weather_data
@@ -19,11 +19,11 @@ Maize = Crop('MaizeChampionGDD', planting_date='05/01')
 
 InitWC = InitialWaterContent(value=['WP'])
 
-#max_irr_season = 400
+max_irr_season = 300
 #irr_mngt = IrrigationManagement(irrigation_method=2,IrrInterval=5)
-irr_mngt = IrrigationManagement(irrigation_method=1, SMT=[50,50,50,50]*4)
+#irr_mngt = IrrigationManagement(irrigation_method=1, SMT=[50,50,50,50]*4)
 #irr_mngt = IrrigationManagement(irrigation_method=5, depth=0.65)
-#irr_mngt = IrrigationManagement(irrigation_method=1, SMT=[40,40,40,40]*4, MaxIrrSeason=max_irr_season)
+irr_mngt = IrrigationManagement(irrigation_method=1, SMT=[30,30,30,30]*4, MaxIrrSeason=max_irr_season)
 
 
 model = AquaCropModel(sim_start_time=f'{1985}/05/01',

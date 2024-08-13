@@ -422,14 +422,15 @@ class Aquaenv(gym.Env):
             self.tsteps+=1
 
            # For evaluating
-            # yield_mean = self.model._outputs.final_stats['Yield (tonne/ha)'].mean()
-            # irrigation_mean = self.model._outputs.final_stats['Seasonal irrigation (mm)'].mean()
+            if self.eval:
+                yield_mean = self.model._outputs.final_stats['Yield (tonne/ha)'].mean()
+                irrigation_mean = self.model._outputs.final_stats['Seasonal irrigation (mm)'].mean()
 
-            # with open('trainedoutput.csv', 'a', newline='') as csvfile:
-            #     writer = csv.writer(csvfile)
-            #     writer.writerow([yield_mean, irrigation_mean])
+                with open('trainedoutput.csv', 'a', newline='') as csvfile:
+                    writer = csv.writer(csvfile)
+                    writer.writerow([yield_mean, irrigation_mean])
     
-            # print(self.model._outputs.final_stats)
+                print(self.model._outputs.final_stats)
            # End evaluating
 
             # calculate profit 
@@ -454,7 +455,7 @@ class Aquaenv(gym.Env):
             else:
                 reward=end_reward
  
-        truncated = False
+        truncated = {}
         return next_obs,reward/1000,done,truncated,dict()
     
 
